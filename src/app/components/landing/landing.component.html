@@ -1,131 +1,222 @@
 <div class="page">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="logo-wrap">
-      <img src="assets/logo.png" alt="Lonche Foods" class="logo-img" />
-      <div class="brand-text">
-        <div class="brand-name">LONCHE</div>
-        <div class="brand-sub">— Foods —</div>
-      </div>
-    </div>
-    <p class="tagline">Comida casera · Home made food</p>
-  </header>
+  <!-- DESKTOP LAYOUT WRAPPER -->
+  <div class="desktop-layout">
 
-  <!-- CTA BUTTONS -->
-  <section class="cta-section">
-    <p class="cta-label">¿Cómo quieres tu pedido?</p>
-    <div class="cta-buttons">
-      <button class="btn btn-rappi" (click)="openRappi()">
-        <span class="btn-top">Delivery</span>
-        Rappi
-      </button>
-      <button class="btn btn-wa" (click)="openWhatsapp('Hola! Quiero hacer un pick up 🙌')">
-        <span class="btn-top">Pick Up</span>
-        WhatsApp
-      </button>
-      <button class="btn btn-menu" (click)="scrollToMenu()">
-        Menú
-      </button>
-    </div>
-  </section>
+    <!-- LEFT COLUMN (desktop) / FULL (mobile) -->
+    <div class="left-col">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-tag">Ñuñoa · Santiago</div>
-      <h1 class="hero-title">Comida casera,<br>hecha con amor</h1>
-      <p class="hero-sub">Para servir, pick up y delivery</p>
-    </div>
-  </section>
+      <!-- HEADER -->
+      <header class="header">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Lonche Foods" class="logo-img" />
+          <div class="brand-text">
+            <div class="brand-name">LONCHE</div>
+            <div class="brand-sub">— Foods —</div>
+          </div>
+        </div>
+        <p class="tagline">Comida casera · Home made food</p>
+      </header>
 
-  <!-- MENU -->
-  <section id="menu-section" class="menu-section">
+      <!-- CTA BUTTONS -->
+      <section class="cta-section">
+        <p class="cta-label">¿Cómo quieres tu pedido?</p>
+        <div class="cta-buttons">
+          <button class="btn btn-rappi" (click)="openRappi()">
+            <span class="btn-top">Delivery</span>
+            Rappi
+          </button>
+          <button class="btn btn-wa" (click)="openWhatsapp('Hola! Quiero hacer un pick up 🙌')">
+            <span class="btn-top">Pick Up</span>
+            WhatsApp
+          </button>
+          <button class="btn btn-menu" (click)="scrollToMenu()">
+            Menú
+          </button>
+        </div>
+      </section>
 
-    <!-- HIGHLIGHT -->
-    <div class="menu-highlight">
-      <div>
-        <div class="mh-tag">Almuerzo del día</div>
-        <div class="mh-title">Menú del día</div>
-        <div class="mh-price">Incluye ensalada y tostadas</div>
-      </div>
-      <div class="mh-badge">$8.000</div>
-    </div>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-tag">Ñuñoa · Santiago</div>
+          <h1 class="hero-title">Comida casera,<br>hecha con amor</h1>
+          <p class="hero-sub">Para servir, pick up y delivery</p>
+        </div>
+      </section>
 
-    <!-- SECTION TITLE -->
-    <div class="section-header">
-      <hr class="section-line" />
-      <span class="section-title">Nuestra carta</span>
-      <hr class="section-line" />
-    </div>
+      <!-- CARRUSEL DE FOTOS -->
+      <section class="carousel-section">
+        <div class="carousel-wrap">
+          <div class="carousel-track">
+            <div class="carousel-slide" *ngFor="let img of carouselImages; let i = index"
+                 [class.active]="i === currentSlide"
+                 [class.prev]="i === prevSlideIndex">
+              <img [src]="img.src" [alt]="img.alt" />
+            </div>
+          </div>
+          <div class="carousel-dots">
+            <button
+              *ngFor="let img of carouselImages; let i = index"
+              class="dot"
+              [class.active]="i === currentSlide"
+              (click)="goToSlide(i)">
+            </button>
+          </div>
+          <button class="carousel-btn prev" (click)="prevSlide()">&#8249;</button>
+          <button class="carousel-btn next" (click)="nextSlide()">&#8250;</button>
+        </div>
+      </section>
 
-    <!-- TABS -->
-    <div class="menu-tabs">
-      <button
-        *ngFor="let tab of tabs"
-        class="tab"
-        [class.active]="activeTab === tab.id"
-        (click)="setTab(tab.id)"
-      >
-        {{ tab.label }}
-      </button>
-    </div>
+      <!-- MENU SECTION (mobile only) -->
+      <section id="menu-section-mobile" class="menu-section mobile-only">
 
-    <!-- MENU CONTENT -->
-    <div class="menu-list">
-      <ng-container *ngFor="let tab of tabs">
-        <div *ngIf="activeTab === tab.id">
-          <ng-container *ngFor="let cat of tab.categories">
-            <div class="menu-cat">{{ cat.cat }}</div>
-            <div class="menu-item" *ngFor="let item of cat.items">
-              <div class="item-info">
-                <div class="item-name">{{ item.name }}</div>
-                <div class="item-desc" *ngIf="item.desc">{{ item.desc }}</div>
-              </div>
-              <div class="item-price">{{ item.price }}</div>
+        <div class="menu-highlight">
+          <div>
+            <div class="mh-tag">Almuerzo del día</div>
+            <div class="mh-title">Menú del día</div>
+            <div class="mh-price">Incluye ensalada y tostadas</div>
+          </div>
+          <div class="mh-badge">$8.000</div>
+        </div>
+
+        <div class="section-header">
+          <hr class="section-line" />
+          <span class="section-title">Nuestra carta</span>
+          <hr class="section-line" />
+        </div>
+
+        <div class="menu-tabs">
+          <button
+            *ngFor="let tab of tabs"
+            class="tab"
+            [class.active]="activeTab === tab.id"
+            (click)="setTab(tab.id)"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
+
+        <div class="menu-list">
+          <ng-container *ngFor="let tab of tabs">
+            <div *ngIf="activeTab === tab.id">
+              <ng-container *ngFor="let cat of tab.categories">
+                <div class="menu-cat">{{ cat.cat }}</div>
+                <div class="menu-item" *ngFor="let item of cat.items">
+                  <div class="item-info">
+                    <div class="item-name">{{ item.name }}</div>
+                    <div class="item-desc" *ngIf="item.desc">{{ item.desc }}</div>
+                  </div>
+                  <div class="item-price">{{ item.price }}</div>
+                </div>
+              </ng-container>
             </div>
           </ng-container>
         </div>
-      </ng-container>
+
+        <div class="nota">
+          <p>¿Un ingrediente te hace mal? Solicita opción vegetariana o veggie.<br>
+          Agrega limón, miel, jengibre y/o canela a tus bebestibles calientes <strong>gratis.</strong></p>
+        </div>
+
+        <!-- PDF en mobile también -->
+        <div class="pdf-mobile">
+          <div class="section-header">
+            <hr class="section-line" />
+            <span class="section-title">Ver carta completa</span>
+            <hr class="section-line" />
+          </div>
+          <div class="pdf-container-mobile">
+            <iframe
+              [src]="pdfUrl"
+              class="pdf-iframe-mobile"
+              frameborder="0"
+              title="Carta Lonche Foods">
+            </iframe>
+          </div>
+          <a [href]="pdfUrl" target="_blank" class="pdf-download-btn">
+            Descargar carta PDF ↓
+          </a>
+        </div>
+
+      </section>
+
+      <!-- INSTAGRAM SECTION -->
+      <section class="instagram-section">
+        <div class="section-header">
+          <hr class="section-line" />
+          <span class="section-title">📸 &#64;lonchecl</span>
+          <hr class="section-line" />
+        </div>
+        <div class="ig-grid">
+          <div class="ig-item" *ngFor="let post of igPosts" (click)="openInstagram()">
+            <img [src]="post.img" [alt]="post.alt" />
+            <div class="ig-overlay">
+              <span>Ver en Instagram</span>
+            </div>
+          </div>
+        </div>
+        <button class="ig-follow-btn" (click)="openInstagram()">
+          Seguir en Instagram ↗
+        </button>
+      </section>
+
+      <!-- INFO -->
+      <section class="info-strip">
+        <div class="info-row" (click)="openMaps()">
+          <div class="info-icon">📍</div>
+          <span class="info-link">Simón Bolívar 2644, Ñuñoa</span>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <a class="info-link" href="tel:+56998329194">+56 9 9832 9194</a>
+        </div>
+        <div class="info-row" (click)="openWhatsapp('Hola Lonche! Tengo una consulta 👋')">
+          <div class="info-icon">💬</div>
+          <span class="info-link">Escríbenos por WhatsApp</span>
+        </div>
+        <div class="info-row" (click)="openInstagram()">
+          <div class="info-icon">📸</div>
+          <span class="info-link">&#64;lonchecl</span>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer">
+        <p><strong>Lonche Foods</strong> · lonche.cl</p>
+        <p>Simón Bolívar 2644, Ñuñoa · &#64;lonchecl</p>
+        <p class="footer-links">
+          <a href="https://wa.me/56998329194" target="_blank">WhatsApp</a>
+          ·
+          <a href="https://instagram.com/lonchecl" target="_blank">Instagram</a>
+        </p>
+      </footer>
+
+    </div><!-- /left-col -->
+
+    <!-- RIGHT COLUMN: PDF CARTA (desktop only) -->
+    <div class="right-col desktop-only" id="menu-section">
+      <div class="pdf-sticky">
+        <div class="section-header pdf-header">
+          <hr class="section-line" />
+          <span class="section-title">Nuestra Carta</span>
+          <hr class="section-line" />
+        </div>
+        <div class="pdf-container">
+          <iframe
+            [src]="pdfUrl"
+            class="pdf-iframe"
+            frameborder="0"
+            title="Carta Lonche Foods">
+          </iframe>
+        </div>
+        <a [href]="pdfUrl" target="_blank" class="pdf-download-btn">
+          Descargar carta PDF ↓
+        </a>
+      </div>
     </div>
 
-    <!-- NOTA -->
-    <div class="nota">
-      <p>¿Un ingrediente te hace mal? Solicita opción vegetariana o veggie.<br>
-      Agrega limón, miel, jengibre y/o canela a tus bebestibles calientes <strong>gratis.</strong></p>
-    </div>
-  </section>
-
-  <!-- INFO -->
-  <section class="info-strip">
-    <div class="info-row" (click)="openMaps()">
-      <div class="info-icon">📍</div>
-      <span class="info-link">Simón Bolívar 2644, Ñuñoa</span>
-    </div>
-    <div class="info-row">
-      <div class="info-icon">📞</div>
-      <a class="info-link" href="tel:+56998329194">+56 9 9832 9194</a>
-    </div>
-    <div class="info-row" (click)="openWhatsapp('Hola Lonche! Tengo una consulta 👋')">
-      <div class="info-icon">💬</div>
-      <span class="info-link">Escríbenos por WhatsApp</span>
-    </div>
-    <div class="info-row" (click)="openInstagram()">
-      <div class="info-icon">📸</div>
-      <span class="info-link">&#64;lonchecl</span>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p><strong>Lonche Foods</strong> · lonche.cl</p>
-    <p>Simón Bolívar 2644, Ñuñoa · &#64;lonchecl</p>
-    <p class="footer-links">
-      <a href="https://wa.me/56998329194" target="_blank">WhatsApp</a>
-      ·
-      <a href="https://instagram.com/lonchecl" target="_blank">Instagram</a>
-    </p>
-  </footer>
+  </div><!-- /desktop-layout -->
 
 </div>

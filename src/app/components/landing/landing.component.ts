@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 interface MenuItem {
   name: string;
@@ -18,6 +19,16 @@ interface MenuTab {
   categories: MenuCategory[];
 }
 
+interface CarouselImage {
+  src: string;
+  alt: string;
+}
+
+interface IgPost {
+  img: string;
+  alt: string;
+}
+
 @Component({
   selector: 'app-landing',
   standalone: true,
@@ -25,8 +36,28 @@ interface MenuTab {
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent {
+export class LandingComponent implements OnInit, OnDestroy {
   activeTab = 'desayuno';
+  currentSlide = 0;
+  prevSlideIndex = -1;
+  pdfUrl: SafeResourceUrl;
+  private autoSlideInterval: any;
+
+  carouselImages: CarouselImage[] = [
+    { src: 'assets/alm1.jpg', alt: 'Lonche Foods - Local' },
+    { src: 'assets/alm2.jpg', alt: 'Lonche Foods - Logo' },
+    { src: 'assets/alm3.jpg', alt: 'Lonche Foods - Marca' },
+  ];
+
+  // Placeholder posts de Instagram — reemplazar con widget real (SnapWidget / LightWidget)
+  igPosts: IgPost[] = [
+    { img: 'assets/con_fondo_2_1.jpg', alt: 'Post Instagram 1' },
+    { img: 'assets/cara_verde_2.png', alt: 'Post Instagram 2' },
+    { img: 'assets/cara_verde_2_1.png', alt: 'Post Instagram 3' },
+    { img: 'assets/con_fondo_2_1.jpg', alt: 'Post Instagram 4' },
+    { img: 'assets/cara_verde_2.png', alt: 'Post Instagram 5' },
+    { img: 'assets/cara_verde_2_1.png', alt: 'Post Instagram 6' },
+  ];
 
   tabs: MenuTab[] = [
     {
@@ -139,6 +170,52 @@ export class LandingComponent {
     }
   ];
 
+  // ⬇ Cuando tengas el ID de Drive, reemplaza DRIVE_FILE_ID_AQUI
+  private driveFileId = '1c1fiow1X6QvmqrKli4Y--7p6afl-mAx_';
+
+  constructor(private sanitizer: DomSanitizer) {
+    this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://drive.google.com/file/d/${this.driveFileId}/preview`
+    );
+  }
+
+  ngOnInit() {
+    this.startAutoSlide();
+  }
+
+  ngOnDestroy() {
+    this.stopAutoSlide();
+  }
+
+  startAutoSlide() {
+    this.autoSlideInterval = setInterval(() => {
+      this.nextSlide();
+    }, 4000);
+  }
+
+  stopAutoSlide() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
+  }
+
+  nextSlide() {
+    this.prevSlideIndex = this.currentSlide;
+    this.currentSlide = (this.currentSlide + 1) % this.carouselImages.length;
+  }
+
+  prevSlide() {
+    this.prevSlideIndex = this.currentSlide;
+    this.currentSlide = (this.currentSlide - 1 + this.carouselImages.length) % this.carouselImages.length;
+  }
+
+  goToSlide(index: number) {
+    this.prevSlideIndex = this.currentSlide;
+    this.currentSlide = index;
+    this.stopAutoSlide();
+    this.startAutoSlide();
+  }
+
   setTab(id: string) {
     this.activeTab = id;
   }
@@ -161,6 +238,9 @@ export class LandingComponent {
   }
 
   scrollToMenu() {
-    document.getElementById('menu-section')?.scrollIntoView({ behavior: 'smooth' });
+    const isMobile = window.innerWidth < 900;
+    const targetId = isMobile ? 'menu-section-mobile' : 'menu-section';
+    const el = document.getElementById(targetId);
+    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
