@@ -1,0 +1,14 @@
+name = "lonche-instagram-sync"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+
+# Corre cada 6 horas. Cambia la expresión si quieres otra frecuencia:
+# https://developers.cloudflare.com/workers/configuration/cron-triggers/
+[triggers]
+crons = ["0 */6 * * *"]
+
+# Los secretos NO van aquí. Se setean con:
+#   wrangler secret put SUPABASE_URL
+#   wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+#   wrangler secret put INSTAGRAM_ACCESS_TOKEN
+#   wrangler secret put SYNC_KEY

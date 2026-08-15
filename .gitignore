@@ -1,3 +1,8 @@
 node_modules/
 dist/
 .angular/
+
+# Cloudflare Worker (worker/instagram-sync)
+.wrangler/
+.dev.vars
+.dev.vars.*

@@ -24,11 +24,6 @@ interface CarouselImage {
   alt: string;
 }
 
-interface IgPost {
-  img: string;
-  alt: string;
-}
-
 @Component({
   selector: 'app-landing',
   standalone: true,
@@ -47,16 +42,6 @@ export class LandingComponent implements OnInit, OnDestroy {
     { src: 'assets/alm1.jpg', alt: 'Lonche Foods - Local' },
     { src: 'assets/alm2.jpg', alt: 'Lonche Foods - Logo' },
     { src: 'assets/alm3.jpg', alt: 'Lonche Foods - Marca' },
-  ];
-
-  // Placeholder posts de Instagram — reemplazar con widget real (SnapWidget / LightWidget)
-  igPosts: IgPost[] = [
-    { img: 'assets/con_fondo_2_1.jpg', alt: 'Post Instagram 1' },
-    { img: 'assets/cara_verde_2.png', alt: 'Post Instagram 2' },
-    { img: 'assets/cara_verde_2_1.png', alt: 'Post Instagram 3' },
-    { img: 'assets/con_fondo_2_1.jpg', alt: 'Post Instagram 4' },
-    { img: 'assets/cara_verde_2.png', alt: 'Post Instagram 5' },
-    { img: 'assets/cara_verde_2_1.png', alt: 'Post Instagram 6' },
   ];
 
   tabs: MenuTab[] = [
@@ -233,8 +218,8 @@ export class LandingComponent implements OnInit, OnDestroy {
     window.open('https://maps.google.com/?q=Simon+Bolivar+2644+Nuñoa+Santiago', '_blank');
   }
 
-  openInstagram() {
-    window.open('https://instagram.com/lonchecl', '_blank');
+  openInstagram(permalink?: string) {
+    window.open(permalink || 'https://instagram.com/lonchecl', '_blank');
   }
 
   scrollToMenu() {

@@ -149,13 +149,8 @@
           <span class="section-title">📸 &#64;lonchecl</span>
           <hr class="section-line" />
         </div>
-        <div class="ig-grid">
-          <div class="ig-item" *ngFor="let post of igPosts" (click)="openInstagram()">
-            <img [src]="post.img" [alt]="post.alt" />
-            <div class="ig-overlay">
-              <span>Ver en Instagram</span>
-            </div>
-          </div>
+        <div class="ig-widget" (click)="openInstagram()">
+          <iframe src="https://snapwidget.com/embed/1128953" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;" title="Posts from Instagram"></iframe>
         </div>
         <button class="ig-follow-btn" (click)="openInstagram()">
           Seguir en Instagram ↗
