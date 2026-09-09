@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -19,11 +19,6 @@ interface MenuTab {
   categories: MenuCategory[];
 }
 
-interface CarouselImage {
-  src: string;
-  alt: string;
-}
-
 @Component({
   selector: 'app-landing',
   standalone: true,
@@ -31,18 +26,9 @@ interface CarouselImage {
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent implements OnInit, OnDestroy {
+export class LandingComponent {
   activeTab = 'desayuno';
-  currentSlide = 0;
-  prevSlideIndex = -1;
   pdfUrl: SafeResourceUrl;
-  private autoSlideInterval: any;
-
-  carouselImages: CarouselImage[] = [
-    { src: 'assets/alm1.jpg', alt: 'Lonche Foods - Local' },
-    { src: 'assets/alm2.jpg', alt: 'Lonche Foods - Logo' },
-    { src: 'assets/alm3.jpg', alt: 'Lonche Foods - Marca' },
-  ];
 
   tabs: MenuTab[] = [
     {
@@ -162,43 +148,6 @@ export class LandingComponent implements OnInit, OnDestroy {
     this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       `https://drive.google.com/file/d/${this.driveFileId}/preview`
     );
-  }
-
-  ngOnInit() {
-    this.startAutoSlide();
-  }
-
-  ngOnDestroy() {
-    this.stopAutoSlide();
-  }
-
-  startAutoSlide() {
-    this.autoSlideInterval = setInterval(() => {
-      this.nextSlide();
-    }, 4000);
-  }
-
-  stopAutoSlide() {
-    if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
-    }
-  }
-
-  nextSlide() {
-    this.prevSlideIndex = this.currentSlide;
-    this.currentSlide = (this.currentSlide + 1) % this.carouselImages.length;
-  }
-
-  prevSlide() {
-    this.prevSlideIndex = this.currentSlide;
-    this.currentSlide = (this.currentSlide - 1 + this.carouselImages.length) % this.carouselImages.length;
-  }
-
-  goToSlide(index: number) {
-    this.prevSlideIndex = this.currentSlide;
-    this.currentSlide = index;
-    this.stopAutoSlide();
-    this.startAutoSlide();
   }
 
   setTab(id: string) {
