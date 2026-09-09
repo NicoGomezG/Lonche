@@ -295,7 +295,23 @@
 }
 
 // ─── MENU (mobile) ────────────────────────────────────────
-.menu-section { padding-bottom: 1rem; }
+.menu-section {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 1rem;
+
+  .menu-watermark {
+    position: absolute;
+    top: 210px;
+    left: 50%;
+    width: 320px;
+    height: 320px;
+    transform: translateX(-50%);
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
 
 .menu-highlight {
   margin: 0 1rem 0.5rem;
