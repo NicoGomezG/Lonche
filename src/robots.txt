@@ -1,0 +1,5 @@
+# Buscadores y asistentes de IA son bienvenidos a leer la carta.
+User-agent: *
+Allow: /
+
+Sitemap: https://lonche.cl/sitemap.xml

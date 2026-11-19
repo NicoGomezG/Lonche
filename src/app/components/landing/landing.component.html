@@ -1,216 +1,165 @@
 <div class="page">
 
-  <!-- DESKTOP LAYOUT WRAPPER -->
-  <div class="desktop-layout">
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <a href="#inicio" class="brand" aria-label="Lonche Foods, inicio">
+      <img src="assets/logo.png" alt="" class="brand-logo" width="48" height="48" />
+      <span class="brand-name">LONCHE <span class="brand-sub">FOODS</span></span>
+    </a>
+    <nav class="topnav" aria-label="Principal">
+      <a href="#carta">Carta</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#instagram">Instagram</a>
+    </nav>
+    <a class="btn btn-wa btn-sm" [href]="links.whatsappOrder" target="_blank" rel="noopener">
+      <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Pedir<span class="hide-mobile">&nbsp;por WhatsApp</span>
+    </a>
+  </header>
 
-    <!-- LEFT COLUMN (desktop) / FULL (mobile) -->
-    <div class="left-col">
-
-      <!-- HEADER -->
-      <header class="header">
-        <div class="logo-wrap">
-          <img src="assets/logo.png" alt="Lonche Foods" class="logo-img" />
-          <div class="brand-text">
-            <div class="brand-name">LONCHE</div>
-            <div class="brand-sub">— Foods —</div>
-          </div>
-        </div>
-        <p class="tagline">Comida casera · Home made food</p>
-      </header>
-
-      <!-- CTA BUTTONS -->
-      <section class="cta-section">
-        <p class="cta-label">¿Cómo quieres tu pedido?</p>
-        <div class="cta-buttons">
-          <button class="btn btn-rappi" (click)="openRappi()">
-            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
-            <span class="btn-top">Delivery</span>
-            Rappi
-          </button>
-          <button class="btn btn-wa" (click)="openWhatsapp('Hola! Quiero hacer un pick up 🙌')">
-            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5.5L3 22l1.2-4.1A8 8 0 1 1 21 12Z"/></svg>
-            <span class="btn-top">Pick Up</span>
-            WhatsApp
-          </button>
-          <button class="btn btn-menu" (click)="scrollToMenu()">
-            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
-            Menú
-          </button>
-        </div>
-      </section>
-
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-overlay"></div>
-        <svg class="hero-sprig" viewBox="0 0 200 200" fill="none" stroke="#e9f4d4" stroke-width="1.1">
-          <path d="M100 10 C 90 60, 90 140, 100 190" />
-          <ellipse cx="80" cy="40" rx="14" ry="6" transform="rotate(-30 80 40)"/>
-          <ellipse cx="120" cy="55" rx="14" ry="6" transform="rotate(30 120 55)"/>
-          <ellipse cx="75" cy="75" rx="14" ry="6" transform="rotate(-30 75 75)"/>
-          <ellipse cx="125" cy="90" rx="14" ry="6" transform="rotate(30 125 90)"/>
-          <ellipse cx="78" cy="110" rx="14" ry="6" transform="rotate(-30 78 110)"/>
-          <ellipse cx="122" cy="125" rx="14" ry="6" transform="rotate(30 122 125)"/>
-        </svg>
-        <div class="hero-content">
-          <div class="hero-tag">Ñuñoa · Santiago</div>
-          <h1 class="hero-title">Comida casera,<br>hecha con amor</h1>
-          <p class="hero-sub">Para servir, pick up y delivery</p>
-        </div>
-      </section>
-
-      <!-- MENU SECTION (mobile only) -->
-      <section id="menu-section-mobile" class="menu-section mobile-only">
-        <img src="assets/logo.png" alt="" class="menu-watermark" />
-
-        <div class="menu-highlight">
-          <div>
-            <div class="mh-tag">Almuerzo del día</div>
-            <div class="mh-title">Menú del día</div>
-            <div class="mh-price">Incluye ensalada y tostadas</div>
-          </div>
-          <div class="mh-badge">$8.000</div>
-        </div>
-
-        <div class="section-header">
-          <hr class="section-line" />
-          <span class="section-title">Nuestra carta</span>
-          <hr class="section-line" />
-        </div>
-
-        <div class="menu-tabs">
-          <button
-            *ngFor="let tab of tabs"
-            class="tab"
-            [class.active]="activeTab === tab.id"
-            (click)="setTab(tab.id)"
-          >
-            {{ tab.label }}
-          </button>
-        </div>
-
-        <div class="menu-list">
-          <ng-container *ngFor="let tab of tabs">
-            <div *ngIf="activeTab === tab.id">
-              <ng-container *ngFor="let cat of tab.categories">
-                <div class="menu-cat">{{ cat.cat }}</div>
-                <div class="menu-item" *ngFor="let item of cat.items">
-                  <div class="item-info">
-                    <div class="item-name">{{ item.name }}</div>
-                    <div class="item-desc" *ngIf="item.desc">{{ item.desc }}</div>
-                  </div>
-                  <div class="item-price">{{ item.price }}</div>
-                </div>
-              </ng-container>
-            </div>
-          </ng-container>
-        </div>
-
-        <div class="nota">
-          <p>¿Un ingrediente te hace mal? Solicita opción vegetariana o veggie.<br>
-          Agrega limón, miel, jengibre y/o canela a tus bebestibles calientes <strong>gratis.</strong></p>
-        </div>
-
-        <!-- PDF en mobile también -->
-        <div class="pdf-mobile">
-          <div class="section-header">
-            <hr class="section-line" />
-            <span class="section-title">Ver carta completa</span>
-            <hr class="section-line" />
-          </div>
-          <div class="pdf-container-mobile">
-            <iframe
-              [src]="pdfUrl"
-              class="pdf-iframe-mobile"
-              frameborder="0"
-              title="Carta Lonche Foods">
-            </iframe>
-          </div>
-          <a [href]="pdfUrl" target="_blank" class="pdf-download-btn">
-            Descargar carta PDF ↓
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div id="inicio" class="hero-text">
+        <span class="eyebrow">Ñuñoa · Santiago · Abierto todos los días</span>
+        <h1 class="hero-title">Comida casera,<br />hecha con amor</h1>
+        <p class="hero-sub hide-mobile">Desayunos, brunch, almuerzos, cafetería y postres. Para servir, pick up y delivery en Simón Bolívar 2644.</p>
+        <div class="hero-ctas">
+          <a href="#carta" class="btn btn-dark hide-mobile">Ver la carta</a>
+          <a [href]="links.rappi" target="_blank" rel="noopener" class="btn btn-rappi btn-stack">
+            <svg class="btn-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="6.5" height="5.5" rx="1"/><circle cx="5.5" cy="17.5" r="2.5"/><circle cx="18.5" cy="17.5" r="2.5"/><path d="M8 17.5h6.5l3-6.5H13"/><path d="M14.5 6.5h2l2 4.5"/><path d="M2.5 13.5h7.5l2 4"/></svg>
+            <span class="btn-label"><span class="btn-top">Delivery</span>Rappi</span>
+          </a>
+          <a [href]="links.whatsappPickup" target="_blank" rel="noopener" class="btn btn-wa btn-stack">
+            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span class="btn-label"><span class="btn-top">Pick up</span>WhatsApp</span>
           </a>
         </div>
-
-      </section>
-
-      <!-- INSTAGRAM SECTION -->
-      <section class="instagram-section">
-        <div class="section-header">
-          <hr class="section-line" />
-          <span class="section-title">📸 &#64;lonchecl</span>
-          <hr class="section-line" />
+        @if (menuDelDia) {
+          <a href="#almuerzos" class="today-card" (click)="selectGroup('almuerzos', $event)">
+            <span class="today-text">
+              <span class="eyebrow">Almuerzo de hoy</span>
+              <span class="today-title">{{ menuDelDia.name }}</span>
+              <span class="today-desc">{{ menuDelDia.desc }}</span>
+            </span>
+            <span class="today-price">{{ menuDelDia.price }}</span>
+          </a>
+        }
+      </div>
+      <!-- Slideshow de Instagram (SnapWidget; snapwidget.js se carga en index.html) -->
+      <div id="instagram" class="hero-media">
+        <div class="ig-widget">
+          <iframe src="https://snapwidget.com/embed/fd0433f4-1895-4528-9afb-25bf625ec7ab" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" title="Fotos de Instagram de Lonche Foods"></iframe>
         </div>
-        <div class="ig-widget" (click)="openInstagram()">
-          <iframe src="https://snapwidget.com/embed/1128953" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;" title="Posts from Instagram"></iframe>
-        </div>
-        <button class="ig-follow-btn" (click)="openInstagram()">
-          Seguir en Instagram ↗
-        </button>
-      </section>
-
-      <!-- INFO -->
-      <section class="info-strip">
-        <div class="info-row" (click)="openMaps()">
-          <div class="info-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.58 7-13a7 7 0 1 0-14 0c0 5.42 7 13 7 13Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-          </div>
-          <span class="info-link">Simón Bolívar 2644, Ñuñoa</span>
-        </div>
-        <div class="info-row">
-          <div class="info-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z"/></svg>
-          </div>
-          <a class="info-link" href="tel:+56998329194">+56 9 9832 9194</a>
-        </div>
-        <div class="info-row" (click)="openWhatsapp('Hola Lonche! Tengo una consulta 👋')">
-          <div class="info-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5.5L3 22l1.2-4.1A8 8 0 1 1 21 12Z"/></svg>
-          </div>
-          <span class="info-link">Escríbenos por WhatsApp</span>
-        </div>
-        <div class="info-row" (click)="openInstagram()">
-          <div class="info-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8 7l1.5-2.5h5L16 7"/><circle cx="12" cy="13.5" r="3.2"/></svg>
-          </div>
-          <span class="info-link">&#64;lonchecl</span>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="footer">
-        <img src="assets/logo.png" alt="" class="footer-watermark" />
-        <p><strong>Lonche Foods</strong> · lonche.cl</p>
-        <p>Simón Bolívar 2644, Ñuñoa · &#64;lonchecl</p>
-        <p class="footer-links">
-          <a href="https://wa.me/56998329194" target="_blank">WhatsApp</a>
-          ·
-          <a href="https://instagram.com/lonchecl" target="_blank">Instagram</a>
-        </p>
-      </footer>
-
-    </div><!-- /left-col -->
-
-    <!-- RIGHT COLUMN: PDF CARTA (desktop only) -->
-    <div class="right-col desktop-only" id="menu-section">
-      <div class="pdf-sticky">
-        <div class="section-header pdf-header">
-          <hr class="section-line" />
-          <span class="section-title">Nuestra Carta</span>
-          <hr class="section-line" />
-        </div>
-        <div class="pdf-container">
-          <iframe
-            [src]="pdfUrl"
-            class="pdf-iframe"
-            frameborder="0"
-            title="Carta Lonche Foods">
-          </iframe>
-        </div>
-        <a [href]="pdfUrl" target="_blank" class="pdf-download-btn">
-          Descargar carta PDF ↓
+        <a [href]="links.instagram" target="_blank" rel="noopener" class="ig-follow">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>
+          Más fotos en &#64;lonchecl
         </a>
       </div>
-    </div>
+    </section>
 
-  </div><!-- /desktop-layout -->
+    <!-- CARTA: siempre en texto, el PDF es opcional -->
+    <section id="carta" class="carta" aria-labelledby="carta-title">
+      <aside class="carta-side">
+        <div class="carta-head">
+          <h2 id="carta-title" class="carta-title">Carta</h2>
+          <p class="carta-meta">Precios en CLP</p>
+        </div>
 
+        <!-- En móvil, degradados + flecha indican que se puede deslizar -->
+        <div class="carta-nav-wrap" [class.more-left]="navMoreLeft" [class.more-right]="navMoreRight">
+          <nav class="carta-nav" aria-label="Secciones de la carta" (scroll)="updateNavHints($event.target)">
+            @for (g of groups; track g.id) {
+              <a [id]="'chip-' + g.id" [href]="'#' + g.id" class="carta-nav-link"
+               (click)="selectGroup(g.id, $event)"
+                 [class.active]="activeGroup === g.id"
+                 [attr.aria-current]="activeGroup === g.id ? 'true' : null">
+                <span class="label-long">{{ g.title }}</span>
+                <span class="label-short">{{ g.short }}</span>
+                <span class="count">{{ g.count }}</span>
+              </a>
+            }
+          </nav>
+          <span class="nav-hint" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          </span>
+        </div>
+
+        <div class="carta-extras">
+          <p class="veg">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21c0-9 6-15 15-16-1 9-7 15-15 16Z"/><path d="M5 21l8-8"/></svg>
+            <span><strong>Opciones vegetarianas y veganas.</strong> ¿Un ingrediente te hace mal? Pide tu versión veggie. Limón, miel, jengibre o canela en tu bebida caliente, gratis.</span>
+          </p>
+          <a [href]="links.pdf" target="_blank" rel="noopener" class="pdf-card" title="Carta Lonche Foods en PDF">
+            <svg class="pdf-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8L14 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 2.5V8h5.5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="2" y="11.5" width="15" height="7" rx="1.5" fill="#d93025"/><text x="9.5" y="16.9" text-anchor="middle" font-family="DM Sans, Arial, sans-serif" font-size="5.6" font-weight="700" fill="#fff">PDF</text></svg>
+            <span class="pdf-title">Ver carta</span>
+          </a>
+        </div>
+      </aside>
+
+      <div class="carta-body">
+        @for (g of groups; track g.id) {
+          <section [id]="g.id" class="menu-group" [class.mobile-hidden]="activeGroup !== g.id" [attr.aria-labelledby]="'h-' + g.id">
+            <h2 [id]="'h-' + g.id" class="group-title">{{ g.title }}</h2>
+            @for (c of g.categories; track c.cat) {
+              <div class="menu-cat">
+                @if (g.showCatTitles) {
+                  <h3 class="cat-title">{{ c.cat }}</h3>
+                }
+                <ul class="items">
+                  @for (i of c.items; track i.name) {
+                    <li class="item">
+                      <span class="item-row">
+                        <span class="item-name">{{ i.name }}</span>
+                        <span class="item-dots" aria-hidden="true"></span>
+                        <span class="item-price">{{ i.price }}</span>
+                      </span>
+                      @if (i.desc) {
+                        <span class="item-desc">{{ i.desc }}</span>
+                      }
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+            @if (!$last) {
+              <button type="button" class="next-group" (click)="selectGroup(groups[$index + 1].id)">
+                Siguiente: {{ groups[$index + 1].short }}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </button>
+            }
+          </section>
+        }
+      </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="visit" aria-labelledby="visit-title">
+      <div class="visit-info">
+        <h2 id="visit-title" class="section-title">Visítanos</h2>
+        <address class="visit-address">Simón Bolívar 2644, Ñuñoa, Santiago</address>
+        <p class="visit-hours">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          {{ hours }}
+        </p>
+      </div>
+      <div class="visit-ctas">
+        <a [href]="links.maps" target="_blank" rel="noopener" class="btn btn-light">Cómo llegar</a>
+        <a [href]="links.phone" class="btn btn-outline-light">+56 9 9832 9194</a>
+        <a [href]="links.whatsappQuestion" target="_blank" rel="noopener" class="btn btn-wa">
+          <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span><strong>Lonche Foods</strong> · Simón Bolívar 2644, Ñuñoa</span>
+    <span class="footer-links">
+      <a [href]="links.whatsappQuestion" target="_blank" rel="noopener">WhatsApp</a> ·
+      <a [href]="links.instagram" target="_blank" rel="noopener">Instagram</a> ·
+      <a [href]="links.rappi" target="_blank" rel="noopener">Rappi</a>
+    </span>
+  </footer>
 </div>

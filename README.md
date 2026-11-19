@@ -112,3 +112,21 @@ Si responde `{"synced": N}` con N > 0, revisa la tabla `instagram_posts` en
 Supabase — debería tener los posts. El landing (`ng serve` o el deploy en
 Cloudflare Pages) los mostrará automáticamente; si la tabla está vacía sigue
 mostrando las 6 fotos placeholder como fallback.
+
+## Actualizar la carta
+
+La carta tiene una sola fuente: `src/menu.json` (precio en CLP como número, o
+`null` para "A consultar").
+
+1. Edita `src/menu.json` (y la fecha `updated`).
+2. Reemplaza `src/assets/menu.pdf` por el PDF nuevo (mismo nombre).
+3. Corre `npm run menu` → regenera `src/carta.html` (página `/carta`),
+   `src/llms.txt`, `src/sitemap.xml` y el JSON-LD (schema.org) de `src/index.html`.
+4. Haz commit de todo, incluidos los archivos generados.
+
+La web muestra la carta siempre en texto (todas las secciones en el HTML) y el
+PDF es solo una descarga opcional. `ng build` **prerenderiza** la página
+(`prerender: true` en `angular.json`), así que `dist/lonche-landing/browser/index.html`
+ya trae la carta completa en HTML: Google y los asistentes de IA la leen sin
+ejecutar JavaScript. El deploy en Cloudflare Pages no cambia (mismo comando y
+misma carpeta de salida).

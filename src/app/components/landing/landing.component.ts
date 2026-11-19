@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Component, ElementRef, NgZone, OnDestroy, afterNextRender } from '@angular/core';
+import menuData from '../../../menu.json';
 
 interface MenuItem {
   name: string;
@@ -13,168 +12,129 @@ interface MenuCategory {
   items: MenuItem[];
 }
 
-interface MenuTab {
+interface MenuGroup {
   id: string;
-  label: string;
+  short: string;
+  title: string;
+  count: number;
+  showCatTitles: boolean;
   categories: MenuCategory[];
 }
+
+function formatPrice(price: number | null): string {
+  return price == null ? 'A consultar' : '$' + String(price).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+const PHONE = '56998329194';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })
-export class LandingComponent {
-  activeTab = 'desayuno';
-  pdfUrl: SafeResourceUrl;
+export class LandingComponent implements OnDestroy {
+  // La carta vive en src/menu.json (fuente única). Ver README → "Actualizar la carta".
+  readonly groups: MenuGroup[] = menuData.groups.map(g => ({
+    id: g.id,
+    short: g.short,
+    title: g.title,
+    count: g.categories.reduce((n, c) => n + c.items.length, 0),
+    showCatTitles: g.categories.length > 1,
+    categories: g.categories.map(c => ({
+      cat: c.cat,
+      items: c.items.map(i => ({ name: i.name, desc: i.desc, price: formatPrice(i.price) }))
+    }))
+  }));
 
-  tabs: MenuTab[] = [
-    {
-      id: 'desayuno',
-      label: 'Desayunos',
-      categories: [
-        {
-          cat: 'Desayunos / Brunch',
-          items: [
-            { name: 'Paila de huevos', desc: '3 huevos y 2 tostadas con semillas', price: '$4.000' },
-            { name: 'Avocado toast', desc: 'Huevo benedictino, tomate cherry, palta y sésamo', price: '$4.500' },
-            { name: 'Omelette champiñón', desc: 'Champiñón, ciboulette y tomate cherry', price: '$5.000' },
-            { name: 'Omelette queso palta', desc: 'Queso, palta, tomate cherry y espinaca', price: '$5.000' },
-          ]
+  readonly hours = `${menuData.hours.label}, ${menuData.hours.opens} a ${menuData.hours.closes} hrs`;
+
+  readonly menuDelDia = this.findItem('Menú del día');
+
+  readonly links = {
+    whatsappOrder: this.wa('Hola Lonche! Quiero hacer un pedido 🙌'),
+    whatsappPickup: this.wa('Hola! Quiero hacer un pick up 🙌'),
+    whatsappQuestion: this.wa('Hola Lonche! Tengo una consulta 👋'),
+    rappi: 'https://www.rappi.cl',
+    maps: 'https://maps.google.com/?q=Simon+Bolivar+2644+Nuñoa+Santiago',
+    instagram: 'https://instagram.com/lonchecl',
+    phone: `tel:+${PHONE}`,
+    pdf: 'assets/menu.pdf',
+  };
+
+  activeGroup = this.groups[0].id;
+  navMoreLeft = false;
+  navMoreRight = true;
+  private observer?: IntersectionObserver;
+
+  constructor(host: ElementRef<HTMLElement>, zone: NgZone) {
+    // Solo en el navegador (no durante el prerender): resalta la sección visible en el índice.
+    afterNextRender(() => {
+      const nav = host.nativeElement.querySelector<HTMLElement>('.carta-nav');
+      if (nav) zone.run(() => this.updateNavHints(nav));
+      if (!('IntersectionObserver' in window)) return;
+      this.observer = new IntersectionObserver(
+        entries => {
+          const visible = entries.filter(e => e.isIntersecting);
+          // afterNextRender corre fuera de la zona: volvemos a ella para que se actualice la vista.
+          if (visible.length) zone.run(() => this.setActive(visible[0].target.id));
         },
-        {
-          cat: 'Sándwiches (ciabatta o croissant)',
-          items: [
-            { name: 'Jamón queso', desc: '', price: '$4.000' },
-            { name: 'Huevo tocino', desc: '', price: '$5.000' },
-            { name: 'Palta tocino', desc: '', price: '$5.500' },
-            { name: 'Ave palta', desc: '', price: '$5.500' },
-            { name: 'Ave mayo', desc: '', price: '$5.500' },
-            { name: 'Churrasco queso', desc: '', price: '$5.500' },
-            { name: 'Lomito queso', desc: '', price: '$5.500' },
-            { name: 'Churrasco con 2 agregados', desc: '', price: '$7.000' },
-            { name: 'Lomito con 2 agregados', desc: '', price: '$7.000' },
-          ]
-        },
-        {
-          cat: 'Sándwiches autor (ciabatta o croissant)',
-          items: [
-            { name: 'Salmón ahumado', desc: 'Queso crema, tomate cherry, alcaparra frita y rúcula', price: '$8.000' },
-            { name: 'Jamón serrano', desc: 'Queso crema, rúcula, aceituna negra y aceite de oliva', price: '$8.000' },
-          ]
-        }
-      ]
-    },
-    {
-      id: 'almuerzo',
-      label: 'Almuerzos',
-      categories: [
-        {
-          cat: 'Menú del día',
-          items: [
-            { name: 'Menú del día', desc: 'Incluye ensalada y tostadas', price: '$8.000' },
-          ]
-        },
-        {
-          cat: 'Bowl ensalada',
-          items: [
-            { name: 'Ensalada César', desc: 'Mix green, pollo, parmesano, dressing de la casa con crutones', price: '$8.000' },
-            { name: 'Salmón ahumado de autor', desc: 'Mix green, salmón, tomates cherry asado, alcaparra frita, dressing y crutones', price: '$9.000' },
-            { name: 'Mediterránea de autor', desc: 'Mix green, jamón serrano, queso cabra, aceitunas, cebolla morada, tomate asado, encurtido', price: '$9.000' },
-          ]
-        },
-        {
-          cat: 'Sopas y cremas',
-          items: [
-            { name: 'Consomé', desc: 'Caldo proteína, verdura, huevo con crutones', price: '$3.000' },
-            { name: 'Crema de verduras', desc: 'Mix de verduras frescas con crutones', price: '$3.500' },
-            { name: 'Crema de zapallo', desc: 'Zapallo horneado con crutones', price: '$4.000' },
-          ]
-        },
-        {
-          cat: 'Otros',
-          items: [
-            { name: 'Empanada de pino', desc: 'Masa casera y pino', price: '$3.000' },
-            { name: 'Empanadas variedades', desc: 'Consulte disponibilidad', price: '$3.000' },
-          ]
-        }
-      ]
-    },
-    {
-      id: 'bebestibles',
-      label: 'Bebestibles',
-      categories: [
-        {
-          cat: 'Frío',
-          items: [
-            { name: 'Bebidas en lata', desc: 'Coca-Cola, Fanta y Sprite', price: '$2.000' },
-            { name: 'Jugo en lata', desc: 'Piña, piña-coco y durazno', price: '$2.000' },
-            { name: 'Agua', desc: 'Con y sin gas', price: '$1.500' },
-          ]
-        },
-        {
-          cat: 'Caliente',
-          items: [
-            { name: 'Café americano', desc: 'Café de grano', price: '$2.500' },
-            { name: 'Café vainilla', desc: 'Variedad Starbucks', price: '$2.500' },
-            { name: 'Té negro', desc: 'Agrega limón, miel, jengibre o canela — gratis', price: '$1.500' },
-            { name: 'Té de la casa', desc: 'Té de hoja con mix de hierbas', price: '$2.000' },
-          ]
-        }
-      ]
-    },
-    {
-      id: 'dulces',
-      label: 'Dulces',
-      categories: [
-        {
-          cat: 'Dulces y otros',
-          items: [
-            { name: 'Yogurt granola', desc: 'Yogurt, granola, cranberries y/o chips de chocolate', price: '$3.000' },
-            { name: 'Panqueque de la casa', desc: 'Con manjar o mermelada casera y azúcar flor', price: '$3.000' },
-            { name: 'Copa helado San Francisco', desc: 'Variedades con y sin azúcar', price: '$4.000' },
-          ]
-        }
-      ]
+        { rootMargin: '-15% 0px -80% 0px' }
+      );
+      host.nativeElement.querySelectorAll('.menu-group').forEach(el => this.observer!.observe(el));
+    });
+  }
+
+  ngOnDestroy() {
+    this.observer?.disconnect();
+  }
+
+  /**
+   * Móvil: la carta funciona como pestañas (solo se ve la sección elegida; las demás siguen en el
+   * HTML para SEO). Escritorio: se deja el comportamiento normal del enlace (scroll a la sección).
+   */
+  selectGroup(id: string, ev?: Event) {
+    if (!window.matchMedia('(max-width: 899px)').matches) return;
+    ev?.preventDefault();
+    this.setActive(id);
+    const body = document.querySelector<HTMLElement>('.carta-body');
+    const nav = document.querySelector<HTMLElement>('.carta-nav-wrap');
+    if (body) {
+      const top = body.getBoundingClientRect().top + window.scrollY - (nav?.offsetHeight ?? 0);
+      window.scrollTo({ top, behavior: 'smooth' });
     }
-  ];
-
-  // ⬇ Cuando tengas el ID de Drive, reemplaza DRIVE_FILE_ID_AQUI
-  private driveFileId = '1c1fiow1X6QvmqrKli4Y--7p6afl-mAx_';
-
-  constructor(private sanitizer: DomSanitizer) {
-    this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      `https://drive.google.com/file/d/${this.driveFileId}/preview`
-    );
   }
 
-  setTab(id: string) {
-    this.activeTab = id;
+  /** Muestra u oculta los degradados/flecha de la barra de chips según cuánto queda por deslizar. */
+  updateNavHints(target: EventTarget | null) {
+    const el = target as HTMLElement | null;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    this.navMoreLeft = el.scrollLeft > 4;
+    this.navMoreRight = max > 4 && el.scrollLeft < max - 4;
   }
 
-  openWhatsapp(msg: string) {
-    const encoded = encodeURIComponent(msg);
-    window.open(`https://wa.me/56998329194?text=${encoded}`, '_blank');
+  setActive(id: string) {
+    if (this.activeGroup === id) return;
+    this.activeGroup = id;
+    // Mantiene visible el chip activo en la barra horizontal (móvil). Se desplaza solo
+    // la barra, no la página, para no cortar el scroll suave al tocar un chip.
+    const chip = document.getElementById('chip-' + id);
+    const nav = chip?.parentElement;
+    if (chip && nav && nav.scrollWidth > nav.clientWidth) {
+      nav.scrollTo({ left: chip.offsetLeft - nav.clientWidth / 2 + chip.offsetWidth / 2, behavior: 'smooth' });
+    }
   }
 
-  openRappi() {
-    window.open('https://www.rappi.cl', '_blank');
+  private findItem(name: string): MenuItem | undefined {
+    for (const g of this.groups) for (const c of g.categories) {
+      const item = c.items.find(i => i.name === name);
+      if (item) return item;
+    }
+    return undefined;
   }
 
-  openMaps() {
-    window.open('https://maps.google.com/?q=Simon+Bolivar+2644+Nuñoa+Santiago', '_blank');
-  }
-
-  openInstagram(permalink?: string) {
-    window.open(permalink || 'https://instagram.com/lonchecl', '_blank');
-  }
-
-  scrollToMenu() {
-    const isMobile = window.innerWidth < 900;
-    const targetId = isMobile ? 'menu-section-mobile' : 'menu-section';
-    const el = document.getElementById(targetId);
-    el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  private wa(msg: string) {
+    return `https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`;
   }
 }

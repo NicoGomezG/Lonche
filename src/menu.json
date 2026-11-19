@@ -1,0 +1,139 @@
+{
+  "_comment": "Fuente única de la carta. Después de editar, corre `npm run menu` para regenerar src/carta.html, src/llms.txt, src/sitemap.xml y el JSON-LD de src/index.html. price: número en CLP, o null = \"A consultar\". Si un grupo tiene una sola categoría, su nombre no se muestra en la web.",
+  "updated": "2026-11-19",
+  "hours": { "label": "Lunes a domingo", "opens": "09:30", "closes": "18:30" },
+  "groups": [
+    {
+      "id": "desayunos",
+      "short": "Desayunos",
+      "title": "Desayunos y brunch",
+      "categories": [
+        {
+          "cat": "Desayunos / Brunch",
+          "items": [
+            { "name": "Paila de huevos", "desc": "3 huevos y 2 tostadas con semillas", "price": 4000 },
+            { "name": "Avocado toast", "desc": "Huevo benedictino, tomate cherry, palta, sésamo y salsa holandesa sobre croissant", "price": 6500 }
+          ]
+        },
+        {
+          "cat": "Omelette",
+          "items": [
+            { "name": "Omelette champiñón", "desc": "Champiñón, ciboulette y tomate cherry", "price": 5000 },
+            { "name": "Omelette queso palta", "desc": "Queso, palta, tomate cherry y espinaca", "price": 6000 }
+          ]
+        },
+        {
+          "cat": "Sándwiches (ciabatta o croissant)",
+          "items": [
+            { "name": "Jamón queso", "desc": "", "price": 4000 },
+            { "name": "Huevo tocino", "desc": "", "price": 5500 },
+            { "name": "Palta tocino", "desc": "", "price": 6000 },
+            { "name": "Ave palta", "desc": "", "price": 5500 },
+            { "name": "Ave mayo", "desc": "", "price": 5000 },
+            { "name": "Churrasco queso", "desc": "", "price": 6500 },
+            { "name": "Lomito queso", "desc": "", "price": 6000 },
+            { "name": "Churrasco con 2 agregados", "desc": "", "price": 7500 },
+            { "name": "Lomito con 2 agregados", "desc": "", "price": 7000 }
+          ]
+        },
+        {
+          "cat": "Sándwiches de autor (ciabatta o croissant)",
+          "items": [
+            { "name": "Sándwich salmón ahumado", "desc": "Salmón ahumado, queso crema, tomate cherry asado, alcaparra frita y rúcula", "price": 8000 },
+            { "name": "Sándwich jamón serrano", "desc": "Jamón serrano, queso crema, tomate cherry asado, rúcula, aceituna negra y aceite de oliva", "price": 8000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "almuerzos",
+      "short": "Almuerzos",
+      "title": "Almuerzos",
+      "categories": [
+        {
+          "cat": "Menú",
+          "items": [
+            { "name": "Menú del día", "desc": "Incluye ensalada y tostadas", "price": 8000 },
+            { "name": "Menú premium", "desc": "Incluye ensalada y tostadas", "price": null }
+          ]
+        },
+        {
+          "cat": "Bowls de ensaladas",
+          "items": [
+            { "name": "Ensalada César", "desc": "Mix green, pollo, queso parmesano, tomate cherry confitado, dressing de la casa y crutones", "price": 8000 },
+            { "name": "Salmón ahumado de autor", "desc": "Mix green, salmón ahumado, tomate cherry confitado, alcaparra frita, gajos de naranja al vivo, dressing y crutones", "price": 9000 },
+            { "name": "Mediterránea de autor", "desc": "Mix green, jamón serrano, queso de cabra, aceitunas, cebolla morada, tomate cherry asado, dressing, encurtido de la casa y crutones", "price": 9000 }
+          ]
+        },
+        {
+          "cat": "Sopas y cremas",
+          "items": [
+            { "name": "Consomé", "desc": "Caldo proteína, verdura, huevo con crutones", "price": 3000 },
+            { "name": "Crema de verduras", "desc": "Mix de verduras cocidas con crutones", "price": 3500 },
+            { "name": "Crema de zapallo", "desc": "Crema de zapallo horneado con crutones", "price": 4000 }
+          ]
+        },
+        {
+          "cat": "Empanadas",
+          "items": [
+            { "name": "Empanada de pino", "desc": "Masa casera y pino", "price": 3000 },
+            { "name": "Empanadas variedades", "desc": "Consulte variedades disponibles", "price": 4000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cafeteria",
+      "short": "Cafetería",
+      "title": "Cafetería",
+      "categories": [
+        {
+          "cat": "Cafetería",
+          "items": [
+            { "name": "Café americano", "desc": "Café de grano", "price": 2500 },
+            { "name": "Café de sabores", "desc": "Consulte variedades disponibles", "price": 2500 },
+            { "name": "Café espresso", "desc": "Café de grano", "price": 2000 },
+            { "name": "Café espresso doble", "desc": "Café de grano", "price": 3000 },
+            { "name": "Latte", "desc": "Café de grano con leche sin lactosa", "price": 3500 },
+            { "name": "Cappuccino", "desc": "Café de grano con leche vaporizada", "price": 3000 },
+            { "name": "Té", "desc": "Té negro", "price": 1500 },
+            { "name": "Té de la casa", "desc": "Té de hoja con mix de hierbas", "price": 2000 },
+            { "name": "Té de Jamaica", "desc": "Concentrado de flor de hibisco", "price": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "short": "Bebidas",
+      "title": "Bebidas frías",
+      "categories": [
+        {
+          "cat": "Bebidas frías",
+          "items": [
+            { "name": "Bebidas en lata", "desc": "Consulte variedades disponibles", "price": 2000 },
+            { "name": "Jugo en lata", "desc": "Consulte variedades disponibles", "price": 2000 },
+            { "name": "Agua", "desc": "Con y sin gas", "price": 1500 },
+            { "name": "Limonada de la casa", "desc": "Con menta y jengibre", "price": 2500 },
+            { "name": "Agua de Jamaica", "desc": "Concentrado de flor de hibisco", "price": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "postres",
+      "short": "Postres",
+      "title": "Postres",
+      "categories": [
+        {
+          "cat": "Dulces y postres",
+          "items": [
+            { "name": "Panqueque de la casa", "desc": "Con manjar, mermelada o leche condensada", "price": 3500 },
+            { "name": "Leche asada", "desc": "Suave flan casero horneado y tostado", "price": 4000 },
+            { "name": "Pie variedades", "desc": "Consulte variedades disponibles", "price": 4900 }
+          ]
+        }
+      ]
+    }
+  ]
+}

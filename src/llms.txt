@@ -1,0 +1,100 @@
+# Lonche Foods
+
+> Restaurante y cafetería de comida casera en Ñuñoa, Santiago, Chile. Desayunos, brunch, sándwiches, almuerzos (menú del día), bowls de ensaladas, sopas, empanadas, cafetería y postres. Opciones vegetarianas y veganas. Para servir en el local, pick up (retiro) y delivery.
+
+- Dirección: Simón Bolívar 2644, Ñuñoa, Santiago, Chile
+- Horario: Lunes a domingo, de 09:30 a 18:30 hrs
+- Teléfono / WhatsApp: +56 9 9832 9194 (https://wa.me/56998329194)
+- Instagram: @lonchecl (https://instagram.com/lonchecl)
+- Sitio web: https://lonche.cl/
+- Carta en HTML: https://lonche.cl/carta
+- Carta en PDF: https://lonche.cl/assets/menu.pdf
+- Pedidos: pick up por WhatsApp; delivery por Rappi
+- Carta actualizada: 2026-11-19. Precios en pesos chilenos (CLP).
+
+## Carta
+
+### Desayunos y brunch
+
+#### Desayunos / Brunch
+
+- Paila de huevos — $4.000: 3 huevos y 2 tostadas con semillas
+- Avocado toast — $6.500: Huevo benedictino, tomate cherry, palta, sésamo y salsa holandesa sobre croissant
+
+#### Omelette
+
+- Omelette champiñón — $5.000: Champiñón, ciboulette y tomate cherry
+- Omelette queso palta — $6.000: Queso, palta, tomate cherry y espinaca
+
+#### Sándwiches (ciabatta o croissant)
+
+- Jamón queso — $4.000
+- Huevo tocino — $5.500
+- Palta tocino — $6.000
+- Ave palta — $5.500
+- Ave mayo — $5.000
+- Churrasco queso — $6.500
+- Lomito queso — $6.000
+- Churrasco con 2 agregados — $7.500
+- Lomito con 2 agregados — $7.000
+
+#### Sándwiches de autor (ciabatta o croissant)
+
+- Sándwich salmón ahumado — $8.000: Salmón ahumado, queso crema, tomate cherry asado, alcaparra frita y rúcula
+- Sándwich jamón serrano — $8.000: Jamón serrano, queso crema, tomate cherry asado, rúcula, aceituna negra y aceite de oliva
+
+### Almuerzos
+
+#### Menú
+
+- Menú del día — $8.000: Incluye ensalada y tostadas
+- Menú premium — A consultar: Incluye ensalada y tostadas
+
+#### Bowls de ensaladas
+
+- Ensalada César — $8.000: Mix green, pollo, queso parmesano, tomate cherry confitado, dressing de la casa y crutones
+- Salmón ahumado de autor — $9.000: Mix green, salmón ahumado, tomate cherry confitado, alcaparra frita, gajos de naranja al vivo, dressing y crutones
+- Mediterránea de autor — $9.000: Mix green, jamón serrano, queso de cabra, aceitunas, cebolla morada, tomate cherry asado, dressing, encurtido de la casa y crutones
+
+#### Sopas y cremas
+
+- Consomé — $3.000: Caldo proteína, verdura, huevo con crutones
+- Crema de verduras — $3.500: Mix de verduras cocidas con crutones
+- Crema de zapallo — $4.000: Crema de zapallo horneado con crutones
+
+#### Empanadas
+
+- Empanada de pino — $3.000: Masa casera y pino
+- Empanadas variedades — $4.000: Consulte variedades disponibles
+
+### Cafetería
+
+#### Cafetería
+
+- Café americano — $2.500: Café de grano
+- Café de sabores — $2.500: Consulte variedades disponibles
+- Café espresso — $2.000: Café de grano
+- Café espresso doble — $3.000: Café de grano
+- Latte — $3.500: Café de grano con leche sin lactosa
+- Cappuccino — $3.000: Café de grano con leche vaporizada
+- Té — $1.500: Té negro
+- Té de la casa — $2.000: Té de hoja con mix de hierbas
+- Té de Jamaica — $2.000: Concentrado de flor de hibisco
+
+### Bebidas frías
+
+#### Bebidas frías
+
+- Bebidas en lata — $2.000: Consulte variedades disponibles
+- Jugo en lata — $2.000: Consulte variedades disponibles
+- Agua — $1.500: Con y sin gas
+- Limonada de la casa — $2.500: Con menta y jengibre
+- Agua de Jamaica — $2.000: Concentrado de flor de hibisco
+
+### Postres
+
+#### Dulces y postres
+
+- Panqueque de la casa — $3.500: Con manjar, mermelada o leche condensada
+- Leche asada — $4.000: Suave flan casero horneado y tostado
+- Pie variedades — $4.900: Consulte variedades disponibles
