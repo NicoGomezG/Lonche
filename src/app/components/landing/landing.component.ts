@@ -55,7 +55,7 @@ export class LandingComponent implements OnDestroy {
     whatsappOrder: this.wa('Hola Lonche! Quiero hacer un pedido 🙌'),
     whatsappPickup: this.wa('Hola! Quiero hacer un pick up 🙌'),
     whatsappQuestion: this.wa('Hola Lonche! Tengo una consulta 👋'),
-    rappi: 'https://www.rappi.cl',
+    rappi: 'https://www.rappi.cl/restaurantes/900117561-lonche',
     maps: 'https://maps.google.com/?q=Simon+Bolivar+2644+Nuñoa+Santiago',
     instagram: 'https://instagram.com/lonchecl',
     phone: `tel:+${PHONE}`,
